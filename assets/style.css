@@ -2003,7 +2003,7 @@ section.alt-bg{ background:#e9f1fb; }
 .brand-univ{ font-size:12px !important; letter-spacing:.03em !important; line-height:1.25 !important; }
 /* 社名(日本語)と英名を同じ行に並べてコンパクトに */
 .brand-dept{ display:flex !important; flex-wrap:wrap !important; align-items:baseline !important; gap:2px 10px !important; }
-.brand-dept .dept-name{ font-size:21px !important; line-height:1.15 !important; }
+.brand-dept .dept-name{ font-size:26px !important; line-height:1.12 !important; }
 .brand-dept .dept-en{ flex-basis:100% !important; font-size:10.5px !important; letter-spacing:.04em !important; line-height:1.2 !important; }
 /* ナビ・トグルも少し詰める */
 .site-nav .nav-item{ padding:4px 0 !important; }
@@ -2013,5 +2013,5 @@ section.alt-bg{ background:#e9f1fb; }
 @media (max-width:860px){
   .hero-cinema .hero-inner{ margin-top:120px !important; }
   .brand-logo{ width:44px !important; height:44px !important; }
-  .brand-dept .dept-name{ font-size:18px !important; }
+  .brand-dept .dept-name{ font-size:21px !important; }
 }
