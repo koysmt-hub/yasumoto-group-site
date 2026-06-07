@@ -167,6 +167,7 @@ section:not(.hero) > .container,
   border-radius: 0;
   position: relative;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 .site-nav .nav-item:hover { text-decoration: none; }
 .site-nav .nav-item .nav-jp {
@@ -175,6 +176,7 @@ section:not(.hero) > .container,
   color: var(--color-text);
   letter-spacing: 0.05em;
   line-height: 1.2;
+  white-space: nowrap;
 }
 .site-nav .nav-item .nav-en {
   font-family: var(--font-en);
