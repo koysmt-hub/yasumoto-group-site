@@ -2015,3 +2015,122 @@ section.alt-bg{ background:#e9f1fb; }
   .brand-logo{ width:44px !important; height:44px !important; }
   .brand-dept .dept-name{ font-size:21px !important; }
 }
+
+/* ============================================================
+   MOBILE / TABLET RESPONSIVE FIX (<=768px)
+   - 置く位置はファイル末尾なので、上の !important コンパクト
+     ヘッダー指定に対しても勝てるよう同等以上の specificity /
+     !important で上書きしている。
+   - スマホでは inline ナビを隠してハンバーガー（.menu-toggle）+
+     ドロップダウン（.site-nav.is-open）に切替。
+   - JS(script.js)は .menu-toggle クリックで .site-nav に
+     .is-open をトグルする（既存実装）。
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* --- ヘッダーは1行レイアウトに戻す（ブランド左 / ハンバーガー右） --- */
+  .header-inner{
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    padding: 8px 0 !important;
+    position: relative;
+  }
+
+  /* ブランド：はみ出さないよう縮める */
+  .site-brand{ gap: 10px !important; min-width: 0; flex: 1 1 auto; }
+  .brand-text{ min-width: 0; }
+  .brand-logo{ width: 42px !important; height: 42px !important; flex-shrink: 0; }
+  .brand-univ{ font-size: 10px !important; line-height: 1.2 !important; }
+  .brand-dept{ flex-wrap: wrap !important; gap: 0 8px !important; }
+  .brand-dept .dept-name{ font-size: 18px !important; line-height: 1.1 !important; }
+  .brand-dept .dept-en{ font-size: 9px !important; flex-basis: 100% !important; }
+
+  /* --- ハンバーガーボタンを表示 --- */
+  .menu-toggle{
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 1px solid rgba(12,31,46,.18);
+    border-radius: 8px;
+    color: #0c1f2e;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .menu-toggle svg{ width: 24px; height: 24px; }
+
+  /* --- 右側ラッパー：縦並びを解除し、ナビをドロップダウン化 --- */
+  .header-right{
+    align-items: flex-end !important;
+    gap: 8px !important;
+  }
+  /* 言語切替はハンバーガーの左に小さく置く（行内） */
+  .header-right .lang-toggle{ align-self: center !important; order: -1; }
+
+  /* inline ナビを既定で隠す。.is-open でドロップダウン表示 */
+  .site-nav{
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    background: #fff;
+    border-top: 1px solid rgba(12,31,46,.10);
+    box-shadow: 0 12px 24px rgba(12,31,46,.12);
+    padding: 6px 0;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+  .site-nav.is-open{ display: flex !important; }
+
+  .site-nav .nav-item{
+    flex-direction: row !important;
+    align-items: baseline !important;
+    justify-content: flex-start !important;
+    gap: 10px;
+    padding: 13px 22px !important;   /* 大きめタップ領域 */
+    border-bottom: 1px solid rgba(12,31,46,.06);
+  }
+  .site-nav .nav-item:last-child{ border-bottom: none; }
+  .site-nav .nav-item .nav-jp{ font-size: 16px !important; }
+  .site-nav .nav-item .nav-en{ font-size: 10px !important; margin-top: 0 !important; }
+  .site-nav .nav-item.is-active::after{ display: none; }
+
+  /* --- ヒーロー：見出しがヘッダー下に正しく収まるよう調整 --- */
+  /* 1行ヘッダーになったので過剰な margin-top を縮め、重なり/見切れを解消 */
+  .hero-cinema{ min-height: 100svh; }
+  .hero-cinema .hero-inner{
+    margin-top: 72px !important;
+    padding: 0 26px !important;
+  }
+  .hero-cinema .hero-kicker{ font-size: .6rem; line-height: 1.5; letter-spacing: .08em; margin-bottom: 12px; white-space: normal; word-break: normal; overflow-wrap: anywhere; }
+  .hero-cinema h1{ font-size: clamp(1.18rem, 4.7vw, 1.6rem) !important; line-height: 1.42; margin-bottom: 16px;
+    word-break: normal !important; line-break: auto !important; overflow-wrap: anywhere !important; text-wrap: normal !important; }
+  .hero-cinema .hero-sub, .hero-cinema .hero-lead{ word-break: normal !important; line-break: auto !important; overflow-wrap: anywhere !important; }
+  .hero-cinema .hero-sub{ font-size: 1.05rem; margin-bottom: 14px; }
+  .hero-cinema .hero-lead{ font-size: .88rem; line-height: 1.8; margin-bottom: 26px; }
+  .hero-cinema .hero-actions .btn{ width: 100%; max-width: 320px; }
+
+  /* --- 横スクロール防止 --- */
+  html, body{ overflow-x: hidden; max-width: 100%; }
+}
+
+/* --- 極狭（<=480px）：ブランド文字をさらに圧縮 --- */
+@media (max-width: 480px) {
+  .brand-univ{ font-size: 9px !important; }
+  .brand-dept .dept-name{ font-size: 16px !important; }
+  .brand-dept .dept-en{ font-size: 8.5px !important; }
+  .brand-logo{ width: 38px !important; height: 38px !important; }
+  .header-right .lang-toggle button{ padding: 5px 8px !important; font-size: 10px !important; }
+  .hero-cinema h1{ font-size: clamp(1.2rem, 6vw, 1.65rem); }
+}

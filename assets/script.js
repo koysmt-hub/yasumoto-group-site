@@ -34,6 +34,13 @@
       nav.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', nav.classList.contains('is-open'));
     });
+    // ナビ項目タップでメニューを閉じる（アンカー遷移時のUX）
+    nav.querySelectorAll('.nav-item').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 
 
